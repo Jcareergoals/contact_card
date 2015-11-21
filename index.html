@@ -12,13 +12,15 @@
 
 			$('form').submit(function(){
 				var desc = $('.description').val();
-				$('#container').append("<div class='card'><h1>" + $('.first_name').val() +" "+ $('.last_name').val() + "</h1><p>Click for description!</p></div>");
+				$('#container').append("<div class='card'><h1>" + 
+					$('.first_name').val() +" "+ $('.last_name').val() + 
+					"</h1><p>Click for description!</p><p class='hidden'>" + 
+					$('.description').val() + "</p></div>");
 				$('#container').on('click', '.card', function(){
-					$(this).text(desc);
-					$(this).attr("class", "disable");
+					$(this).children().toggleClass("hidden");
 				})
-				return false; 
-					// $('.first_name, .last_name, .description').val("");
+				$('.first_name, .last_name, .description').val("");
+				return false; 	
 			})
 		})
 	</script>
