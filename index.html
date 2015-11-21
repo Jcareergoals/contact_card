@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+	<title>Contacts</title>
+	<meta charset='UTF-8'>
+	<meta name="description" content="Upon filling out the form, clicking submit will cause a card to appear on the screen with brief information about your entry. Clicking on these cards will cause it's description to appear.">
+	<!-- <meta http-equiv="refresh" content="1"> -->
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> 
+	<script type="text/javascript">
+		$('document').ready(function(){ 
+
+			$('form').submit(function(){
+				var desc = $('.description').val();
+				$('#container').append("<div class='card'><h1>" + $('.first_name').val() +" "+ $('.last_name').val() + "</h1><p>Click for description!</p></div>");
+				$('#container').on('click', '.card', function(){
+					$(this).text(desc);
+					$(this).attr("class", "disable");
+				})
+				return false; 
+					// $('.first_name, .last_name, .description').val("");
+			})
+		})
+	</script>
+
+</head>
+<body>
+	<form>
+		First name: <input type='text' name='first_name' class='first_name'></td><br>
+		Last name: <input type='text' name='last_name' class='last_name'></td><br>
+		<p>Description</p>
+		<textarea type='text' placeholder="Enter Description" class='description'></textarea><br>
+		<input type='submit' value='Add Users' class='submit'>
+	</form>
+		<div id="container">
+
+	</div> <!-- End of container -->
+</body>
+</html>
